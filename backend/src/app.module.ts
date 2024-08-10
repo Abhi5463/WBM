@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-
+import { WeightTransactionModule } from './weight-transaction/weight-transaction.module';
+import { PurchaseOrderModule } from './purchase-order/purchase-order.module';
+import { SalesOrderModule } from './sales-order/sales-order.module';
+import { SyncModule } from './sync/sync.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,6 +27,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         },
       }),
     }),
+    WeightTransactionModule,
+    PurchaseOrderModule,
+    SalesOrderModule,
+    SyncModule,
   ],
   controllers: [],
   providers: [],
