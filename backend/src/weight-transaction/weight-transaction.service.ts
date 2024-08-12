@@ -6,7 +6,7 @@ import { WeightTransaction } from './weight-transaction.entity';
 @Injectable()
 export class WeightTransactionService {
   constructor(
-    @InjectRepository(WeightTransaction)
+    @InjectRepository(WeightTransaction, 'CargoWeighAdvConnection') // Specify the connection name here
     private weightTransactionRepository: Repository<WeightTransaction>,
   ) {}
 

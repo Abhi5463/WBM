@@ -4,7 +4,9 @@ import { WeightTransaction } from './weight-transaction.entity';
 
 @Controller('weight-transactions')
 export class WeightTransactionController {
-  constructor(private readonly weightTransactionService: WeightTransactionService) {}
+  constructor(
+    private readonly weightTransactionService: WeightTransactionService,
+  ) {}
 
   @Get()
   findAll(): Promise<WeightTransaction[]> {
