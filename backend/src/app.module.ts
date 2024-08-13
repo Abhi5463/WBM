@@ -51,7 +51,7 @@ import { WeightTransaction } from './weight-transaction/weight-transaction.entit
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
         entities: [WeightTransaction],
-        synchronize: false, // Enable sync for the middleware database
+        synchronize: true, // Enable sync for the middleware database
         logging: true,
         options: {
           encrypt: false, // Set to true if you're using SSL

@@ -9,7 +9,7 @@ import { WeightTransactionService } from '../weight-transaction/weight-transacti
 export class SyncService {
   constructor(
     private weightTransactionService: WeightTransactionService,
-    @InjectRepository(WeightTransaction, 'CargoWeighAdvConnection')
+    @InjectRepository(WeightTransaction, 'CargoWeighAdvConnection') // Fetch from CargoWeighAdv
     private weightTransactionRepository: Repository<WeightTransaction>,
   ) {}
 
@@ -22,6 +22,7 @@ export class SyncService {
       `);
 
       for (const item of weightTransactions) {
+        // console.log(item.TransactionID);
         await this.weightTransactionService.create({
           TransactionID: item.TransactionID,
           TransactionType: item.TransactionType,

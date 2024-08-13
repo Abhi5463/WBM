@@ -6,16 +6,16 @@ import { WeightTransaction } from './weight-transaction.entity';
 @Injectable()
 export class WeightTransactionService {
   constructor(
-    @InjectRepository(WeightTransaction, 'CargoWeighAdvConnection') // Specify the connection name here
-    private weightTransactionRepository: Repository<WeightTransaction>,
+    @InjectRepository(WeightTransaction, 'CargoWeighAdvMiddlewareConnection') // Specify the connection name here
+    private weightTransactionMiddlewareRepository: Repository<WeightTransaction>,
   ) {}
 
   findAll(): Promise<WeightTransaction[]> {
-    return this.weightTransactionRepository.find();
+    return this.weightTransactionMiddlewareRepository.find();
   }
 
   create(data: Partial<WeightTransaction>): Promise<WeightTransaction> {
-    const transaction = this.weightTransactionRepository.create(data);
-    return this.weightTransactionRepository.save(transaction);
+    const transaction = this.weightTransactionMiddlewareRepository.create(data);
+    return this.weightTransactionMiddlewareRepository.save(transaction);
   }
 }

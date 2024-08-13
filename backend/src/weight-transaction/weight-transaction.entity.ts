@@ -26,8 +26,8 @@ export class WeightTransaction {
   @Column()
   CustomerName: string;
 
-  @Column()
-  CustomerCode: string;
+  @Column({ nullable: true })
+  CustomerCode: string | null;
 
   @Column()
   SupplierName: string;
@@ -104,11 +104,11 @@ export class WeightTransaction {
   @Column('decimal')
   TransactionTotal: number;
 
-  @Column('decimal')
-  UserFirstWeigh: number;
+  @Column()
+  UserFirstWeigh: string;
 
-  @Column('decimal')
-  UserSecondWeigh: number;
+  @Column()
+  UserSecondWeigh: string;
 
   @Column({ nullable: true })
   PO_ID: string;

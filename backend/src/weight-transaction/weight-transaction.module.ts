@@ -6,7 +6,10 @@ import { WeightTransactionController } from './weight-transaction.controller';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([WeightTransaction], 'CargoWeighAdvConnection'),
+    TypeOrmModule.forFeature(
+      [WeightTransaction],
+      'CargoWeighAdvMiddlewareConnection',
+    ),
   ],
   providers: [WeightTransactionService],
   controllers: [WeightTransactionController],
