@@ -5,109 +5,109 @@ export class WeightTransaction {
   @PrimaryGeneratedColumn()
   TransactionID: number;
 
-  @Column()
+  @Column({ nullable: true })
   TransactionType: string;
 
-  @Column({ default: false })
+  @Column({ default: false, nullable: true })
   TransactionCompleted: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   EntryDateTime: Date;
 
-  @Column()
+  @Column({ nullable: true })
   ExitDateTime: Date;
 
-  @Column()
+  @Column({ nullable: true })
   VehicleRegistration: string;
 
-  @Column()
+  @Column({ nullable: true })
   VehicleCode: string;
 
-  @Column()
+  @Column({ nullable: true })
   CustomerName: string;
 
   @Column({ nullable: true })
   CustomerCode: string | null;
 
-  @Column()
+  @Column({ nullable: true })
   SupplierName: string;
 
-  @Column()
-  SupplierCode: string;
+  @Column({ nullable: true })
+  SupplierCode: string | null;
 
-  @Column()
+  @Column({ nullable: true })
   ProductName: string;
 
-  @Column()
-  ProductCode: string;
+  @Column({ nullable: true })
+  ProductCode: string | null;
 
-  @Column()
+  @Column({ nullable: true })
   HaulerName: string;
 
-  @Column()
-  HaulerCode: string;
+  @Column({ nullable: true })
+  HaulerCode: string | null;
 
-  @Column()
+  @Column({ nullable: true })
   DestinationName: string;
 
-  @Column()
-  DestinationCode: string;
+  @Column({ nullable: true })
+  DestinationCode: string | null;
 
-  @Column()
+  @Column({ nullable: true })
   SealNumber1: string;
 
-  @Column()
+  @Column({ nullable: true })
   TankNumber1: string;
 
-  @Column('decimal')
+  @Column('decimal', { nullable: true })
   SuppliedWeight: number;
 
-  @Column()
+  @Column({ nullable: true })
   SuppliedTicketNumber: string;
 
-  @Column()
+  @Column({ nullable: true })
   PurchaseOrderNumber: string;
 
-  @Column()
+  @Column({ nullable: true })
   DeliveryNumber: string;
 
-  @Column('decimal')
+  @Column('decimal', { nullable: true })
   GrossWeight: number;
 
-  @Column('decimal')
+  @Column('decimal', { nullable: true })
   TareWeight: number;
 
-  @Column('decimal')
-  NetWeight: number;
+  @Column('decimal', { nullable: true })
+  NetWeight: number | null;
 
-  @Column()
+  @Column({ nullable: true })
   Remarks: string;
 
-  @Column()
+  @Column({ nullable: true })
   Driver: string;
 
-  @Column()
+  @Column({ nullable: true })
   ScaleMode: string;
 
-  @Column()
+  @Column({ nullable: true })
   ScaleID: string;
 
-  @Column('decimal')
+  @Column('decimal', { nullable: true })
   ProductUnitWeight: number;
 
-  @Column('decimal')
+  @Column('decimal', { nullable: true })
   ProductUnitPrice: number;
 
-  @Column('decimal')
+  @Column('decimal', { nullable: true })
   ProductQuantity: number;
 
-  @Column('decimal')
+  @Column('decimal', { nullable: true })
   TransactionTotal: number;
 
-  @Column()
+  @Column({ nullable: true })
   UserFirstWeigh: string;
 
-  @Column()
+  @Column({ nullable: true })
   UserSecondWeigh: string;
 
   @Column({ nullable: true })
@@ -116,6 +116,6 @@ export class WeightTransaction {
   @Column({ nullable: true })
   SO_ID: string;
 
-  @Column()
-  Status: string;
+  @Column({ nullable: true })
+  Status: string | null;
 }

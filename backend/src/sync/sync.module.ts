@@ -7,7 +7,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
+    // Register WeightTransaction for CargoWeighAdv database connection
     TypeOrmModule.forFeature([WeightTransaction], 'CargoWeighAdvConnection'),
+    // Register WeightTransaction for CargoWeighAdv-middleware database connection
+    TypeOrmModule.forFeature(
+      [WeightTransaction],
+      'CargoWeighAdvMiddlewareConnection',
+    ),
     WeightTransactionModule,
   ],
   providers: [SyncService],

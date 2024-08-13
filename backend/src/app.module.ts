@@ -31,7 +31,7 @@ import { WeightTransaction } from './weight-transaction/weight-transaction.entit
         database: configService.get<string>('CARGO_WEIGH_ADV_DB_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: false, // Disable sync for the existing database
-        logging: true,
+        logging: false,
         options: {
           encrypt: false, // Set to true if you're using SSL
         },
@@ -52,7 +52,7 @@ import { WeightTransaction } from './weight-transaction/weight-transaction.entit
         database: configService.get<string>('DB_NAME'),
         entities: [WeightTransaction],
         synchronize: true, // Enable sync for the middleware database
-        logging: true,
+        logging: false,
         options: {
           encrypt: false, // Set to true if you're using SSL
         },

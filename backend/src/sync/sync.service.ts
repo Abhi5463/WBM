@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Cron } from '@nestjs/schedule';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { WeightTransaction } from '../weight-transaction/weight-transaction.entity';
@@ -11,18 +11,34 @@ export class SyncService {
     private weightTransactionService: WeightTransactionService,
     @InjectRepository(WeightTransaction, 'CargoWeighAdvConnection') // Fetch from CargoWeighAdv
     private weightTransactionRepository: Repository<WeightTransaction>,
+    @InjectRepository(WeightTransaction, 'CargoWeighAdvMiddlewareConnection') // Target CargoWeighAdv-middleware
+    private middlewareTransactionRepository: Repository<WeightTransaction>,
   ) {}
 
-  @Cron(CronExpression.EVERY_MINUTE) // Change this as per your requirement
+  @Cron('2 0 * * *') // Change this as per your requirement
   async syncData() {
     try {
-      // Query all data from the TransactionDetail table in CargoWeighAdv database
-      const weightTransactions = await this.weightTransactionRepository.query(`
-        SELECT * FROM CargoWeighAdv.dbo.TransactionDetails
-      `);
+      // Step 1: Fetch all existing TransactionIDs from the middleware database
+      const existingTransactionIDs =
+        await this.middlewareTransactionRepository.find({
+          select: ['TransactionID'],
+        });
+      const existingIDsSet = new Set(
+        existingTransactionIDs.map((item) => item.TransactionID),
+      );
 
-      for (const item of weightTransactions) {
-        // console.log(item.TransactionID);
+      // Step 2: Query all data from the TransactionDetail table in CargoWeighAdv database
+      const weightTransactions = await this.weightTransactionRepository.query(`
+      SELECT * FROM CargoWeighAdv.dbo.TransactionDetails
+    `);
+
+      // Step 3: Filter out already existing TransactionIDs
+      const newTransactions = weightTransactions.filter(
+        (item: any) => !existingIDsSet.has(item.TransactionID),
+      );
+
+      for (const item of newTransactions) {
+        console.log(item.TransactionID);
         await this.weightTransactionService.create({
           TransactionID: item.TransactionID,
           TransactionType: item.TransactionType,
