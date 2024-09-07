@@ -14,11 +14,11 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#FFBF00', // Example primary color
+      main: '#900C3F', // Example primary color
       contrastText: '#ffffff', // Text color for primary color
     },
     secondary: {
-      main: '#900C3F', // Example secondary color
+      main: '#FFBF00', // Example secondary color
       contrastText: '#ffffff', // Text color for secondary color
     },
     error: {
@@ -41,8 +41,8 @@ const theme = createTheme({
       secondary: '#808080', // Example secondary text color
     },
     faded: {
-    primary: '#f9b8d1',
-    secondary: '#ededed',
+    primary: '#fef6f9',
+    secondary: '#fffcf5',
     }
   },
 });
